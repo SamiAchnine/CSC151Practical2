@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<Cards> cards = new ArrayList<>();
         cards.add(readCardFromFile());
-        System.out.println(cards.get(0));
+        System.out.println(cards.get(cards.size() - 1));
     }
 
     static String parseDataFromWECIBFile(String line) throws RuntimeException {
@@ -20,7 +20,7 @@ public class Main {
     static Cards readCardFromFile() {
         File cardFile = new File("cards.wecib");
 
-        int id = 0;
+        String id = "";
         String name = "";
         String description = "";
 
@@ -42,7 +42,7 @@ public class Main {
                 String value = parseDataFromWECIBFile(data);
 
                 switch (dataLine) {
-                    case 0: id = Integer.parseInt(value); break;
+                    case 0: id = value; break;
                     case 1: name = value; break;
                     case 2: description = value; break;
                     case 3: rarity = Integer.parseInt(value); break;
