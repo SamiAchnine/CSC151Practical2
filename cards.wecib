@@ -1,5 +1,6 @@
 [Card]
 ID: 001
+Type: Person
 Name: AB
 Description: AB card.
 Rarity: 0
@@ -8,6 +9,7 @@ Defense: 300
 
 [Card]
 ID: 002
+Type: Person
 Name: Alex Frieders
 Description: Freaky ahh senior.
 Rarity: 0
@@ -16,6 +18,7 @@ Defense: 480
 
 [Card]
 ID: 003
+Type: Person
 Name: Anna Moore
 Description: Boy scout, knows some Chinese.
 Rarity: 0
@@ -24,6 +27,7 @@ Defense: 350
 
 [Card]
 ID: 004
+Type: Person
 Name: Beatrice Kovalik
 Description: Ballet ahh senior.
 Rarity: 0
@@ -32,6 +36,7 @@ Defense: 280
 
 [Card]
 ID: 005
+Type: Person
 Name: Chandler Thompson
 Description: Charlie's boyfriend, yet still the housewife.
 Rarity: 1
@@ -40,6 +45,7 @@ Defense: 300
 
 [Card]
 ID: 006
+Type: Person
 Name: Charlie Sanchez
 Description: wesker
 Rarity: 1
@@ -48,6 +54,7 @@ Defense: 320
 
 [Card]
 ID: 007
+Type: Person
 Name: Joseph Lennert
 Description: Creator of the Silly Guy (patent pending)
 Rarity: 1
@@ -56,6 +63,7 @@ Defense: 780
 
 [Card]
 ID: 008
+Type: Person
 Name: Tristan Owen
 Description: Built like a microphone.
 Rarity: 1
@@ -64,6 +72,7 @@ Defense: 330
 
 [Card]
 ID: 009
+Type: Person
 Name: Ethan Gardner
 Description: Could be Mr. Gardner's long lost twin
 Rarity: 2
@@ -72,6 +81,7 @@ Defense: 960
 
 [Card]
 ID: 010
+Type: Person
 Name: James Fischer Brandon
 Description: chud
 Rarity: 2
@@ -80,6 +90,7 @@ Defense: 1000
 
 [Card]
 ID: 011
+Type: Person
 Name: Sami Achnine
 Description: Confused for Samuel L. Jackson.
 Rarity: 2
@@ -88,6 +99,7 @@ Defense: 670
 
 [Card]
 ID: 012
+Type: Person
 Name: Silly Guy
 Description: Silly little man appears on random whiteboards randomly. Be VERY careful.
 Rarity: 2
@@ -96,6 +108,7 @@ Defense: 720
 
 [Card]
 ID: 013
+Type: Person
 Name: Gardner II
 Description: Gardnuh, we need to code.
 Rarity: 3
@@ -104,14 +117,16 @@ Defense: 1350
 
 [Card]
 ID: 014
+Type: Furniture
 Name: Benches behind the sign near Starbucks
 Description: Rearranged when necessary
 Rarity: 3
-Attack: 0
+Attack: 135
 Defense: 2000
 
 [Card]
 ID: 015
+Type: Person
 Name: Ms Keller
 Description: Every 60 seconds in Japan... a minute passes.
 Rarity: 4
@@ -120,8 +135,9 @@ Defense: 1024
 
 [Card]
 ID: 016
+Type: Furniture
 Name: Stolen Vending Machine
 Description: Well it's broken anyway...
 Rarity: 4
-Attack: 0
+Attack: 200
 Defense: 2100
