@@ -60,7 +60,7 @@ public class Deck {
      * @author Sami Achnine
      * @version 1.00
      */
-    private static Cards readCardFromFile(int cardID) {
+    public static Cards readCardFromFile(int cardID) {
         File cardFile = new File("cards.wecib");
 
         String id = "";
@@ -68,7 +68,7 @@ public class Deck {
         String name = "";
         String description = "";
         String rarity = "";
-        
+
         int attack = 0;
         int defense = 0;
 

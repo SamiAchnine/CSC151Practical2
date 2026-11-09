@@ -10,22 +10,23 @@ public class Gacha {
 
     // Rarity number (from cards.wecib) -> relative chance of being rolled.
     // Assumes 1 = common ... 4 = legendary. Change to match your file.
-    private static final Map<Integer, Integer> RARITY_WEIGHTS = Map.of(
-            1, 60,
-            2, 25,
-            3, 10,
-            4, 5
+    private static final Map<Integer, Double> RARITY_WEIGHTS = Map.of(
+            1, 67.67,
+            2, 25.0,
+            3, 5.95,
+            4, 1.75,
+            5, 0.1
     );
 
     private final ArrayList<Cards> pool;                      // one template per card in the file
-    private final Map<Integer, Integer> activeWeights = new LinkedHashMap<>(); // only tiers that exist
+    private final Map<Integer, Double> activeWeights = new LinkedHashMap<>(); // only tiers that exist
 
     public Gacha() {
         pool = Deck.getDeck();
 
         for (Cards c : pool) {
             int rarity = rarityOf(c);
-            activeWeights.put(rarity, RARITY_WEIGHTS.getOrDefault(rarity, 1));
+            activeWeights.put(rarity, RARITY_WEIGHTS.getOrDefault(rarity, 1.0));
         }
 
         if (pool.isEmpty()) {
@@ -54,12 +55,12 @@ public class Gacha {
 
     private int rollRarity() {
         int total = 0;
-        for (int weight : activeWeights.values()) {
+        for (double weight : activeWeights.values()) {
             total += weight;
         }
 
         int roll = ThreadLocalRandom.current().nextInt(total);
-        for (Map.Entry<Integer, Integer> entry : activeWeights.entrySet()) {
+        for (Map.Entry<Integer, Double> entry : activeWeights.entrySet()) {
             roll -= entry.getValue();
             if (roll < 0) {
                 return entry.getKey();
