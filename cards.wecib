@@ -10,134 +10,656 @@ Defense: 300
 [Card]
 ID: 002
 Type: Person
-Name: Alex Frieders
-Description: Freaky ahh senior.
-Rarity: 0
-Attack: 320
-Defense: 480
-
-[Card]
-ID: 003
-Type: Person
-Name: Anna Moore
-Description: Boy scout, knows some Chinese.
-Rarity: 0
-Attack: 350
-Defense: 350
-
-[Card]
-ID: 004
-Type: Person
 Name: Beatrice Kovalik
-Description: Ballet ahh senior.
+Description: Ballet ahh junior.
 Rarity: 0
 Attack: 230
 Defense: 280
 
 [Card]
+ID: 003
+Type: Person
+Name: Emilia Fisher
+Description: Duck. Junior.
+Rarity: 0
+Attack: 270
+Defense: 370
+
+[Card]
+ID: 004
+Type: Person
+Name: Henry Short
+Description: Short junior, wakeID is heshort.
+Rarity: 0
+Attack: 2000
+Defense: 3000
+
+[Card]
 ID: 005
 Type: Person
-Name: Chandler Thompson
-Description: Charlie's boyfriend, yet still the housewife.
+Name: Jacob Hartzell
+Description: Jacob Hartzell is a cutie patooty junior.
+Rarity: 0
+Attack: 310
+Defense: 400
+
+[Card]
+ID: 006
+Type: Person
+Name: Logain
+Description: THE BioTech student. Junior.
+Rarity: 0
+Attack: 220
+Defense: 330
+
+[Card]
+ID: 007
+Type: Person
+Name: Rafal Toborek
+Description: Polish, Mexican, left-handed. Also a junior.
+Rarity: 0
+Attack: 380
+Defense: 380
+
+[Card]
+ID: 008
+Type: Person
+Name: Serena
+Description: Owns a 3DS and plays Luigi's Mansion. Junior.
+Rarity: 0
+Attack: 270
+Defense: 500
+
+[Card]
+ID: 009
+Type: Person
+Name: Anna Split
+Description: Made like a banana and splitted.
+Rarity: 1
+Attack: 620
+Defense: 420
+
+[Card]
+ID: 010
+Type: Furniture
+Name: Dude Guys
+Description: Just some dudes. And guys. On Serena's hoodie.
+Rarity: 1
+Attack: 580
+Defense: 630
+
+[Card]
+ID: 011
+Type: Furniture
+Name: Wallholes
+Description: Holes in the wall. Potentially made for sitting in.
+Rarity: 1
+Attack: 490
+Defense: 520
+
+[Card]
+ID: 012
+Type: Furniture
+Name: Gymnasium
+Description: The gymnasium of MHS, where dreams are made and dodgeballs are thrown.
+Rarity: 1
+Attack: 600
+Defense: 580
+
+[Card]
+ID: 013
+Type: Person
+Name: Jamey Sideways
+Description: Jamey, but sideways.
+Rarity: 1
+Attack: 680
+Defense: 640
+
+[Card]
+ID: 014
+Type: Furniture
+Name: Uno
+Description: The world-famous game that has split friendships, nations, and worlds.
+Rarity: 1
+Attack: 800
+Defense: 310
+
+[Card]
+ID: 015
+Type: Person
+Name: Aura Farming
+Description: We don't know where he got that umbrella. Or how he got on the table.
+Rarity: 2
+Attack: 1020
+Defense: 900
+
+[Card]
+ID: 016
+Type: Furniture
+Name: Gardner Pizza
+Description: The pizza as requested per Mr. Gardner.
+Rarity: 2
+Attack: 400
+Defense: 960
+
+[Card]
+ID: 017
+Type: Person
+Name: JoJo's
+Description: Jamey thinks he's a JoJo character.
+Rarity: 2
+Attack: 890
+Defense: 920
+
+[Card]
+ID: 018
+Type: Person
+Name: Mrs. Whittington
+Description: The OGs remember Earth Environmental Science class with her.
+Rarity: 2
+Attack: 1040
+Defense: 1000
+
+[Card]
+ID: 019
+Type: Furniture
+Name: Academic Rigor
+Description: Look how dedicated and studious this man is.
+Rarity: 3
+Attack: 1420
+Defense: 1340
+
+[Card]
+ID: 020
+Type: Person
+Name: Freshman Jamey
+Description: THE Dragon James himself, but when he was a freshman.
+Rarity: 3
+Attack: 1370
+Defense: 1190
+
+[Card]
+ID: 021
+Type: Furniture
+Name: The Tunnel Gang
+Description: Stand by Me but through the sewer.
+Rarity: 3
+Attack: 1230
+Defense: 1490
+
+[Card]
+ID: 022
+Type: Furniture
+Name: Coworkers
+Description: Nick did not consent to this photo. Daniel laughed.
+Rarity: 4
+Attack: 1760
+Defense: 1600
+
+[Card]
+ID: 023
+Type: Person
+Name: Walk em Down Gardner
+Description: Big Gardner does not play. You mess with him, you mess with the gang.
+Rarity: 4
+Attack: 1960
+Defense: 1600
+
+[Card]
+ID: 024
+Type: Person
+Name: Alex Frieders
+Description: Freaky ahh junior.
+Rarity: 0
+Attack: 320
+Defense: 480
+
+[Card]
+ID: 025
+Type: Person
+Name: Christian
+Description: Short. Also a junior.
+Rarity: 0
+Attack: 340
+Defense: 320
+
+[Card]
+ID: 026
+Type: Person
+Name: Eris Thompson
+Description: Cooler twin. Also a junior.
+Rarity: 0
+Attack: 280
+Defense: 330
+
+[Card]
+ID: 027
+Type: Person
+Name: Iniya
+Description: Was once a Hufflepuff, is now a Ravenclaw. Junior.
+Rarity: 0
+Attack: 210
+Defense: 260
+
+[Card]
+ID: 028
+Type: Person
+Name: Jalen
+Description: Green Hope Color Guard captain, middle name would've been Sky if this world was right. Junior.
+Rarity: 0
+Attack: 280
+Defense: 390
+
+[Card]
+ID: 029
+Type: Person
+Name: Nicholas Foles
+Description: THE PRESIDENT, El Presidente himself, Lebron's idol, cutie patooty. Also a junior.
+Rarity: 0
+Attack: 420
+Defense: 460
+
+[Card]
+ID: 030
+Type: Person
+Name: Reg Thiago-Ramos
+Description: Aura. Junior.
+Rarity: 0
+Attack: 370
+Defense: 400
+
+[Card]
+ID: 031
+Type: Person
+Name: Treyvon Pearson
+Description: If you need data stored he's your guy. Junior.
+Rarity: 0
+Attack: 330
+Defense: 310
+
+[Card]
+ID: 032
+Type: Person
+Name: Chandler
+Description: Charlie's boyfriend, yet still the housewife. Junior.
 Rarity: 1
 Attack: 690
 Defense: 300
 
 [Card]
-ID: 006
-Type: Person
-Name: Charlie Sanchez
-Description: wesker
+ID: 033
+Type: Furniture
+Name: Gatorade Machine RT1
+Description: Is called the Gatorade Machine yet does not possess any Gatorade.
 Rarity: 1
-Attack: 710
-Defense: 320
+Attack: 700
+Defense: 680
 
 [Card]
-ID: 007
+ID: 034
 Type: Person
-Name: Joseph Lennert
-Description: Creator of the Silly Guy (patent pending)
+Name: JosephJamesLennertIII
+Description: Joseph. Creator of the Silly Guys.
 Rarity: 1
-Attack: 420
+Attack: 720
 Defense: 780
 
 [Card]
-ID: 008
-Type: Person
-Name: Tristan Owen
-Description: Built like a microphone.
+ID: 035
+Type: Furniture
+Name: Theater
+Description: Home to many lost children, led by their cruel dictator, Mrs. Kaulfuss.
 Rarity: 1
-Attack: 720
-Defense: 330
+Attack: 650
+Defense: 690
 
 [Card]
-ID: 009
-Type: Person
-Name: Ethan Gardner
-Description: Could be Mr. Gardner's long lost twin
-Rarity: 2
-Attack: 720
-Defense: 960
+ID: 036
+Type: Furniture
+Name: Sustenance
+Description: Food is important. I think, at least. I'm like 80% sure.
+Rarity: 1
+Attack: 760
+Defense: 460
 
 [Card]
-ID: 010
+ID: 037
 Type: Person
-Name: James Fischer Brandon
-Description: chud
+Name: Baby Prez
+Description: THE KID PRESIDENT, always been a certified OG. Not a junior.
 Rarity: 2
-Attack: 520
-Defense: 1000
+Attack: 960
+Defense: 650
 
 [Card]
-ID: 011
+ID: 038
 Type: Person
-Name: Sami Achnine
-Description: Confused for Samuel L. Jackson.
+Name: Jamey Geeked
+Description: Jamey straight geekin' in the elevator.
 Rarity: 2
-Attack: 950
+Attack: 1010
+Defense: 860
+
+[Card]
+ID: 039
+Type: Person
+Name: Low Poly Jamey
+Description: From Joseph's Junior Vice President campaign video.
+Rarity: 2
+Attack: 1060
+Defense: 840
+
+[Card]
+ID: 040
+Type: Person
+Name: Sami
+Description: Commonly confused for Samuel L. Jackson. Rotated 180 degrees for dramatic effect.
+Rarity: 2
+Attack: 850
 Defense: 670
 
 [Card]
-ID: 012
-Type: Person
-Name: Silly Guy
-Description: Silly little man appears on random whiteboards randomly. Be VERY careful.
-Rarity: 2
-Attack: 1070
-Defense: 720
+ID: 041
+Type: Furniture
+Name: 2 Best Buds
+Description: Despite differences, they still become the bestest of buds.
+Rarity: 3
+Attack: 1200
+Defense: 1260
 
 [Card]
-ID: 013
+ID: 042
 Type: Person
-Name: Gardner II
+Name: Gardner White
 Description: Gardnuh, we need to code.
 Rarity: 3
 Attack: 1350
 Defense: 1350
 
 [Card]
-ID: 014
-Type: Furniture
-Name: Benches behind the sign near Starbucks
-Description: Rearranged when necessary
-Rarity: 3
-Attack: 135
-Defense: 2000
-
-[Card]
-ID: 015
+ID: 043
 Type: Person
-Name: Ms Keller
-Description: Every 60 seconds in Japan... a minute passes.
-Rarity: 4
-Attack: 1430
-Defense: 1024
+Name: Zest
+Description: Normal Jamey.
+Rarity: 3
+Attack: 1340
+Defense: 1260
 
 [Card]
-ID: 016
+ID: 044
 Type: Furniture
-Name: Stolen Vending Machine
-Description: Well it's broken anyway...
+Name: Group Bonding
+Description: Stand by Me but searching for a dead car.
 Rarity: 4
-Attack: 200
-Defense: 2100
+Attack: 1620
+Defense: 1840
+
+[Card]
+ID: 045
+Type: Person
+Name: Anna Moore
+Description: Boy scout, knows some Japanese. Junior.
+Rarity: 0
+Attack: 350
+Defense: 350
+
+[Card]
+ID: 046
+Type: Person
+Name: Darsh
+Description: Leader of the Vending Machine Scandal of 24. Junior.
+Rarity: 0
+Attack: 470
+Defense: 350
+
+[Card]
+ID: 047
+Type: Person
+Name: Genesis
+Description: Elnatan's girlfriend, yet is still the man of the house. Junior.
+Rarity: 0
+Attack: 440
+Defense: 420
+
+[Card]
+ID: 048
+Type: Person
+Name: Iremide
+Description: Really good at soccer. Not so much at basketball, though. Junior.
+Rarity: 0
+Attack: 290
+Defense: 430
+
+[Card]
+ID: 049
+Type: Person
+Name: Jamey Brandon
+Description: THE Dragon James himself, both his brain cells are in a fierce battle for top 10. Junior.
+Rarity: 0
+Attack: 410
+Defense: 370
+
+[Card]
+ID: 050
+Type: Person
+Name: Noah Couch
+Description: The boy who couched, once had an afro. Junior.
+Rarity: 0
+Attack: 210
+Defense: 360
+
+[Card]
+ID: 051
+Type: Person
+Name: Ryan Shutte
+Description: Nerdy junior and cooler twin.
+Rarity: 0
+Attack: 390
+Defense: 480
+
+[Card]
+ID: 052
+Type: Furniture
+Name: Wake Tech
+Description: Nick threw up 8 times while trying to build this card. IT department is horrible.
+Rarity: 0
+Attack: 450
+Defense: 450
+
+[Card]
+ID: 053
+Type: Person
+Name: Charlie
+Description: Wesker. Junior.
+Rarity: 1
+Attack: 710
+Defense: 30
+
+[Card]
+ID: 054
+Type: Furniture
+Name: Grand Library RT1
+Description: Not really a library, more like a bunch of chairs in a room.
+Rarity: 1
+Attack: 520
+Defense: 740
+
+[Card]
+ID: 055
+Type: Furniture
+Name: MHS Campus
+Description: The campus of the underclassmen.
+Rarity: 1
+Attack: 620
+Defense: 800
+
+[Card]
+ID: 056
+Type: Furniture
+Name: Poppi Machine
+Description: Everyone loves Poppi, right? Guys?
+Rarity: 1
+Attack: 490
+Defense: 700
+
+[Card]
+ID: 057
+Type: Person
+Name: Tristan Owen
+Description: Built like a microphone. Junior.
+Rarity: 1
+Attack: 670
+Defense: 730
+
+[Card]
+ID: 058
+Type: Person
+Name: Ethan Gardner
+Description: Ethan Gardner. Potentially Mr. Gardner's long lost twin.
+Rarity: 2
+Attack: 720
+Defense: 960
+
+[Card]
+ID: 059
+Type: Furniture
+Name: Beatrice And Jamey
+Description: WE SAY YOU SHOULD WATCH ONE PIECE - Jamey.
+Rarity: 2
+Attack: 990
+Defense: 1030
+
+[Card]
+ID: 060
+Type: Person
+Name: Mr. Gross
+Description: What could he be thinking about?
+Rarity: 2
+Attack: 1030
+Defense: 980
+
+[Card]
+ID: 061
+Type: Person
+Name: Silly Guy
+Description: Some silly guy. Created by Joseph.
+Rarity: 2
+Attack: 1070
+Defense: 720
+
+[Card]
+ID: 062
+Type: Furniture
+Name: Brotherly Love
+Description: Blood siblings showing their passionate love for each other.
+Rarity: 3
+Attack: 1380
+Defense: 1410
+
+[Card]
+ID: 063
+Type: Person
+Name: Please Jamey I Need This
+Description: PLEASE JAMEY I NEEEEEEEEEEEED THIS.
+Rarity: 3
+Attack: 1480
+Defense: 1320
+
+[Card]
+ID: 064
+Type: Person
+Name: Please Mr. Gardner I Need This
+Description: Why you trying not to laugh Mr. Gardner, that is mad disrespectful.
+Rarity: 4
+Attack: 1890
+Defense: 1740
+
+[Card]
+ID: 065
+Type: Person
+Name: Cal Raleigh
+Description: Graduate card.
+Rarity: 5
+Attack: 3200
+Defense: 3700
+
+[Card]
+ID: 066
+Type: Person
+Name: Hellen Keller
+Description: Graduate card.
+Rarity: 5
+Attack: 300
+Defense: 300
+
+[Card]
+ID: 067
+Type: Person
+Name: Mr. Prez
+Description: Graduate card.
+Rarity: 5
+Attack: 3020
+Defense: 3800
+
+[Card]
+ID: 068
+Type: Person
+Name: Linus Torvalds
+Description: Graduate card.
+Rarity: 5
+Attack: 3640
+Defense: 3800
+
+[Card]
+ID: 069
+Type: Person
+Name: Kanye West
+Description: Graduate card.
+Rarity: 5
+Attack: 3900
+Defense: 3400
+
+[Card]
+ID: 070
+Type: Person
+Name: John Helldiver
+Description: Graduate card.
+Rarity: 5
+Attack: 3300
+Defense: 4000
+
+[Card]
+ID: 071
+Type: Person
+Name: Scott Ralls
+Description: Graduate card.
+Rarity: 5
+Attack: 3278
+Defense: 3700
+
+[Card]
+ID: 072
+Type: Person
+Name: Teddy Roosevelt
+Description: Graduate card.
+Rarity: 5
+Attack: 4000
+Defense: 3800
+
+[Card]
+ID: 073
+Type: Person
+Name: Edwin Booth
+Description: Graduate card.
+Rarity: 5
+Attack: 3300
+Defense: 3600
+
+[Card]
+ID: 074
+Type: Person
+Name: Anne Frank
+Description: The rarest card in the game, the holy grail, Anne Frank herself.
+Rarity: 5
+Attack: 4000
+Defense: 4000
