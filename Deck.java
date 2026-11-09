@@ -25,7 +25,7 @@ public class Deck {
         return parts[1].trim();
     }
 
-    private static Cards readCardFromFile(int cardID) {
+    public static Cards readCardFromFile(int cardID) {
         File cardFile = new File("cards.wecib");
 
         String id = "";
