@@ -4,20 +4,30 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        File saveData = new File("game.wecib");
-        if (!saveData.exists()) {
+        int money = 500;
+        ArrayList<Cards> collection = new ArrayList<>();
+
+
+        Object[] saveData; 
+        File saveDataFile = new File("game.wecib");
+        if (!saveDataFile.exists()) {
             try {
                 SaveDataManager.createSaveData();
+                System.out.println("Creating save data...");
             } catch (Exception e) {
                 System.out.println(e);
             }
+        }
+        else {
+            saveData = SaveDataManager.readSaveData();
+            money = (int)saveData[0];
+            collection = (java.util.ArrayList<Cards>)saveData[1];
         }
         
         System.out.print("Welcome to the WECIB Gacha Battle Game!");
         Scanner input = new Scanner(System.in);
         Gacha gacha = new Gacha();
-        int money = 500;
-        ArrayList<Cards> collection = new ArrayList<>();
+
 
         System.out.print("You start with $" + money + "and 6 free pulls to get you started.");
         for (int i = 1; i <= 6; i++) {
@@ -41,6 +51,8 @@ public class Main {
         for (Cards c : collection) {
             System.out.println(" " + c);
         }
+        Object[] dataToSave = {money, collection};
+        SaveDataManager.saveDataRecieve(dataToSave);
     }
 
     private static void addPull(Gacha gacha, ArrayList<Cards> collection) {
