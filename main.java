@@ -20,7 +20,7 @@ public class Main {
         }
         else {
             saveData = SaveDataManager.readSaveData();
-            money = (int)saveData[0];
+            money = (Integer)saveData[0];
             collection = (java.util.ArrayList<Cards>)saveData[1];
         }
         

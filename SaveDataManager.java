@@ -46,8 +46,8 @@ public class SaveDataManager {
                             writer.write(card.getName()); writer.newLine();
                             writer.write(card.getDesc()); writer.newLine();
                             writer.write(card.getRarity()); writer.newLine();
-                            writer.write(card.getDefense()); writer.newLine();
-                            writer.write(card.getAttack()); writer.newLine();
+                            writer.write(String.valueOf(card.getDefense())); writer.newLine();
+                            writer.write(String.valueOf(card.getAttack())); writer.newLine();
                         }
                         else if (element instanceof Furniture_Card) {
                             Furniture_Card card = (Furniture_Card) element;
@@ -58,8 +58,8 @@ public class SaveDataManager {
                             writer.write(card.getName()); writer.newLine();
                             writer.write(card.getDesc()); writer.newLine();
                             writer.write(card.getRarity()); writer.newLine();
-                            writer.write(card.getDefense()); writer.newLine();
-                            writer.write(card.getMultiplier()); writer.newLine();
+                            writer.write(String.valueOf(card.getDefense())); writer.newLine();
+                            writer.write(String.valueOf(card.getMultiplier())); writer.newLine();
                         }
                         else {
                             // Prevent unsupported objects from silently producing corrupt save data.
