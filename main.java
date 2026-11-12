@@ -1,8 +1,18 @@
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        File saveData = new File("game.wecib");
+        if (!saveData.exists()) {
+            try {
+                SaveDataManager.createSaveData();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+        
         System.out.print("Welcome to the WECIB Gacha Battle Game!");
         Scanner input = new Scanner(System.in);
         Gacha gacha = new Gacha();
