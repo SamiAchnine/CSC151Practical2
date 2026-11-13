@@ -27,8 +27,12 @@ public class Player {
         for (int i = 0; i < collection.size(); i++) {
             tempHand.add(collection.remove(0));
         }
-        
+
         this.hand = tempHand;
+    }
+
+    public void attack(Player victim, int atkDmg) {
+        victim.takeDamage(atkDmg);
     }
 
     public void takeDamage(int battle_damage) {
