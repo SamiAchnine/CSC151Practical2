@@ -91,6 +91,7 @@ public class SaveDataManager {
         }
 
         data.add(reader.readLine()); // Money
+        data.add(reader.readLine()); // Name
         data.add(readCards(reader)); // Collection
 
     } catch (Exception e) {
