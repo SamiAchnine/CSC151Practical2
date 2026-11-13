@@ -36,6 +36,14 @@ public class Player {
         return hand;
     }
 
+    protected void setHand(ArrayList<Cards> newHand) {
+        this.hand = newHand;
+    }
+
+    public void attack(Player victim, int atkDmg) {
+        victim.takeDamage(atkDmg);
+    }
+
     public void drawCardsIntoHand() {
         ArrayList<Cards> collectionCP = new ArrayList<>(this.collection);
         Collections.shuffle(collectionCP);
@@ -48,13 +56,6 @@ public class Player {
         this.hand = tempHand;
     }
 
-    protected void setHand(ArrayList<Cards> newHand) {
-        this.hand = newHand;
-    }
-
-    public void attack(Player victim, int atkDmg) {
-        victim.takeDamage(atkDmg);
-    }
 
     public void takeDamage(int battle_damage) {
         health -= battle_damage;
@@ -63,6 +64,8 @@ public class Player {
     public boolean isDefeated() {
         return health  <= 0;
     }
+
+
 }
 
 /* human player subclass */
@@ -83,18 +86,25 @@ class HumanPlayer extends Player{
 }
 
 /* cpu player subclass */
-class CPUPlayer extends Player{
+class CPUPlayer extends Player {
+
     CPUPlayer(String name, int health) {
         super(name, health, new ArrayList<>());
     }
- 
+
     public void drawCardIntoHand(ArrayList<Cards> allCards) {
         ArrayList<Cards> newHand = new ArrayList<>();
-        if(!allCards.isEmpty()) {
-            int index = (int)(Math.random() * allCards.size());
-            newHand.add(allCards.get(index));
-        } 
+
+        ArrayList<Cards> shuffled = new ArrayList<>(allCards);
+        Collections.shuffle(shuffled);
+
+        // CPU draws up to 5 random cards.
+        int handSize = Math.min(5, shuffled.size());
+
+        for (int i = 0; i < handSize; i++) {
+            newHand.add(shuffled.get(i));
+        }
+
         setHand(newHand);
     }
- 
 }

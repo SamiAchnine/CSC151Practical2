@@ -4,9 +4,13 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        boolean debug = false;
         int money = 500;
         ArrayList<Cards> collection = new ArrayList<>();
         String name = "";
+        Scanner input = new Scanner(System.in);
+        Gacha gacha = new Gacha();
+        HumanPlayer human = new HumanPlayer(name, Battle.START_HEALTH, collection);
 
 
         Object[] saveData; 
@@ -27,13 +31,11 @@ public class Main {
         }
         
         System.out.print("Welcome to the WECIB Gacha Battle Game!\n");
-        Scanner input = new Scanner(System.in);
-        Gacha gacha = new Gacha();
 
         if (name.equals("") && collection.isEmpty()) {
             // FTUE
             System.out.print("Enter your name to continue: ");
-            name = input.next();
+            name = input.nextLine();
 
             System.out.println("You start with $" + money + " and 6 free pulls to get you started.");
             for (int i = 1; i <= 6; i++) {
@@ -42,32 +44,78 @@ public class Main {
                 addPull(gacha, collection);
             }
 
-            saveGame(money, name, collection);
+            saveGame(money, name, collection, debug);
         }
         else {
             System.out.println("Hi, " + name + "!");
+            System.out.println("Your save data has been successfully loaded.");
         }
 
         // main loop
-        while (money >= Gacha.PULL_COST) {
-            System.out.print("Your current balance is $" + money + ". Would you like to pull again for $" + Gacha.PULL_COST + "? (Y/N)");
-            String answer = input.nextLine();
-            if (!answer.equalsIgnoreCase("y")) {
-                break;
-            } else {
-                money -= Gacha.PULL_COST;
-                addPull(gacha, collection);
-            }
-        }
+        boolean playing = true;
+    
+        while (playing) {
+            System.out.println("Money: " + money);
+            System.out.println("Please select an option: ");
+            System.out.println("\n1. Play the gacha");
+            System.out.println("2. Enter Battle");
+            System.out.println("3. View collection");
+            System.out.println("4. Save & Exit");
+            System.out.print("(1-4): ");
 
-        // prints collection if the player denies pulling with money
-        System.out.println("\nYour collection: " + collection.size());
-        for (Cards c : collection) {
-            System.out.println(" " + c);
+            String answer = input.nextLine();
+
+            if (answer.equals("1")) {
+                // gacha pull logic
+                if (money >= Gacha.PULL_COST) {
+                    money -= Gacha.PULL_COST;
+                    addPull(gacha, collection);
+                    human.setCollection(collection);
+                    saveGame(money, name, collection, debug);
+                } else {
+                    System.out.println("Not enough money!");
+                }
+
+            } else if (answer.equals("2")) {
+                // battle logic (main.java side)
+                CPUPlayer cpu = new CPUPlayer("CPU", Battle.START_HEALTH);
+
+                // CPU draws one random card from the collection.
+                cpu.drawCardIntoHand(collection);
+
+                Battle battle = new Battle(human, cpu, input);
+
+                if (battle.fight()) {
+                    money += Battle.WIN_REWARD;
+                }
+
+            } else if (answer.equals("3")) {
+                // collection viewer
+                System.out.println("\nYour collection: " + collection.size());
+
+                for (Cards c : collection) {
+                    System.out.println(c);
+                }
+
+            } else if (answer.equals("4")) {
+                // ends game
+                playing = false;
+            } 
+            else if (answer.equals("99")) {
+                // allows you to use view save points
+                debug = true;
+                System.out.println("--- WARNING: Save Debug Enabled ---");
+            }
+            else {
+                System.out.println("Invalid option!");
+            }
+
+            // after every option, the game saves
+            saveGame(money, name, collection, debug);
         }
 
         // saves game upon exit
-        saveGame(money, name, collection);
+        saveGame(money, name, collection, debug);
     }
 
     private static void addPull(Gacha gacha, ArrayList<Cards> collection) {
@@ -81,8 +129,11 @@ public class Main {
         }
     }
 
-    private static void saveGame(int money, String name, ArrayList<Cards> collection) {
+    private static void saveGame(int money, String name, ArrayList<Cards> collection, boolean debug) {
         Object[] dataToSave = {money, name, collection};
         SaveDataManager.saveDataRecieve(dataToSave);
+        if (debug) {
+            System.out.println("Game saved!");
+        }
     }
 }
