@@ -20,6 +20,22 @@ public class Player {
         this.collection = collection;
     }
 
+    public String getName() {
+        return name;
+    }
+ 
+    public int getHealth() {
+        return health;
+    }
+ 
+    public void resetHealth(int health) {
+        this.health = health;
+    }
+ 
+    public ArrayList<Cards> getHand() {
+        return hand;
+    }
+
     public void drawCardsIntoHand() {
         ArrayList<Cards> collectionCP = new ArrayList<>(this.collection);
         Collections.shuffle(collectionCP);
@@ -30,6 +46,10 @@ public class Player {
         }
 
         this.hand = tempHand;
+    }
+
+    protected void setHand(ArrayList<Cards> newHand) {
+        this.hand = newHand;
     }
 
     public void attack(Player victim, int atkDmg) {
@@ -63,3 +83,18 @@ class HumanPlayer extends Player{
 }
 
 /* cpu player subclass */
+class CPUPlayer extends Player{
+    CPUPlayer(String name, int health) {
+        super(name, health, new ArrayList<>());
+    }
+ 
+    public void drawCardIntoHand(ArrayList<Cards> allCards) {
+        ArrayList<Cards> newHand = new ArrayList<>();
+        if(!allCards.isEmpty()) {
+            int index = (int)(Math.random() * allCards.size());
+            newHand.add(allCards.get(index));
+        } 
+        setHand(newHand);
+    }
+ 
+}

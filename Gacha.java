@@ -1,5 +1,3 @@
-/* this part is ALL vibe coded, Ms. Keller gave us the OK */
-
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
