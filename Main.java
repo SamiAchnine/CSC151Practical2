@@ -24,10 +24,18 @@ public class Main {
             }
         }
         else {
-            saveData = SaveDataManager.readSaveData();
-            money = Integer.parseInt((String)saveData[0]);
-            name = (String)saveData[1];
-            collection = (java.util.ArrayList<Cards>)saveData[2];
+            try {
+                saveData = SaveDataManager.readSaveData();
+                money = Integer.parseInt((String)saveData[0]);
+                name = (String)saveData[1];
+                collection = (java.util.ArrayList<Cards>)saveData[2];
+            }
+            catch (Exception e) {
+                System.out.print("Save data could not be properly loaded. The game will now exit. Please validate the save file, and fix it, or delete it.");
+                e.printStackTrace();
+                System.exit(74); // exit code 74 -> IO error
+            }
+            
         }
         
         System.out.print("Welcome to the WECIB Gacha Battle Game!\n");
@@ -77,10 +85,10 @@ public class Main {
                 }
 
             } else if (answer.equals("2")) {
-                // battle logic (main.java side)
-                CPUPlayer cpu = new CPUPlayer("CPU", Battle.START_HEALTH);
+                // battle logic
+                CPUPlayer cpu = new CPUPlayer("Charles P. Underwood", Battle.START_HEALTH);
 
-                // CPU draws one random card from the collection.
+                // CPU creates a collection of 1 card (will get overwritten later)
                 cpu.drawCardIntoHand(collection);
 
                 Battle battle = new Battle(human, cpu, input);
@@ -98,9 +106,21 @@ public class Main {
                 }
 
             } else if (answer.equals("4")) {
+                saveGame(money, name, collection, debug);
+                
                 // ends game
                 playing = false;
             } 
+            else if (answer.equals("DELETE SAVE")) {
+                System.out.println("This is going to delete all game saves. Okay?");
+                System.out.print("Press Enter to confirm. ");
+                input.nextLine();
+                saveDataFile.delete();
+                System.out.println("The save file was deleted. The game will now close.");
+                System.out.print("Press Enter to confirm. ");
+                input.nextLine();
+                System.exit(0); // exit code 0 -> success
+            }
             else if (answer.equals("99")) {
                 // allows you to use view save points
                 debug = true;
@@ -110,12 +130,11 @@ public class Main {
                 System.out.println("Invalid option!");
             }
 
+            
             // after every option, the game saves
             saveGame(money, name, collection, debug);
         }
 
-        // saves game upon exit
-        saveGame(money, name, collection, debug);
     }
 
     private static void addPull(Gacha gacha, ArrayList<Cards> collection) {

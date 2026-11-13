@@ -24,7 +24,7 @@ public class SaveDataManager {
         }
         else {
             java.io.PrintWriter output = new java.io.PrintWriter(saveFile);
-            output.println("GACHASAVE1.0");
+            output.println("GACHASAVE1.1");
             output.close(); // Close the writer to ensure the header is saved and the file is released.
             return true;
         }
@@ -40,7 +40,7 @@ public class SaveDataManager {
     public static void saveDataRecieve(Object[] data) {
         // The handling of the different cards was created by GPT
         try (java.io.BufferedWriter writer = new java.io.BufferedWriter(new java.io.FileWriter("game.wecib"))) {
-            writer.write("GACHASAVE1.0");
+            writer.write("GACHASAVE1.1");
             writer.newLine();
 
             for (Object value : data) {
@@ -112,7 +112,7 @@ public class SaveDataManager {
 
         try (java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader("game.wecib"))) {
             String header = reader.readLine();
-            if (!header.equals("GACHASAVE1.0")) {
+            if (!header.equals("GACHASAVE1.1")) {
                 throw new java.io.IOException("Save file invalid");
             }
 

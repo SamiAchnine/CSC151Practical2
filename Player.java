@@ -45,15 +45,16 @@ public class Player {
     }
 
     public void drawCardsIntoHand() {
-        ArrayList<Cards> collectionCP = new ArrayList<>(this.collection);
-        Collections.shuffle(collectionCP);
-        ArrayList<Cards> tempHand = new ArrayList<>();
+        ArrayList<Cards> stash = new ArrayList<Cards>(this.collection);
+        Collections.shuffle(stash);
 
-        for (int i = 0; i < collectionCP.size(); i++) {
-            tempHand.add(collectionCP.remove(0));
+        ArrayList<Cards> newHand = new ArrayList<>();
+
+        for (int i = 0; i < stash.size(); i++) {
+            newHand.add(stash.get(i));
         }
 
-        this.hand = tempHand;
+        setHand(newHand);
     }
 
 
@@ -91,7 +92,7 @@ class CPUPlayer extends Player {
     CPUPlayer(String name, int health) {
         super(name, health, new ArrayList<>());
     }
-
+    
     public void drawCardIntoHand(ArrayList<Cards> allCards) {
         ArrayList<Cards> newHand = new ArrayList<>();
 

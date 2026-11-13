@@ -106,6 +106,9 @@ public class Deck {
 
                 if (dataLine == 7) {
                     if (type.equalsIgnoreCase("Furniture")) {
+                        if (Integer.parseInt(rarity) >= 2) { // sophomore or greater
+
+                        }
                         return new Furniture_Card(id, name, description, rarity, defense, attack/100);
                     }
                     else if (type.equalsIgnoreCase("Person")) {

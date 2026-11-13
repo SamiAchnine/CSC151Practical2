@@ -14,8 +14,8 @@ public class Cards {
     }
 
     public String toString() {
-        return "ID: " + ID + "  Name: " + name + "  Description: " + description
-        + "  Rarity: " + rarity + "  Defense: " + defense;
+        return "Name: " + name + " Description: " + description
+        + " Rarity: " + rarity + " Defense: " + defense;
     }
 
     /** ID getter
@@ -63,7 +63,7 @@ class Person_Card extends Cards {
 
     @Override 
     public String toString() {
-        return super.toString() + "  Attack: " + attack;
+        return super.toString() + " Attack: " + attack;
     }
 
     /** attack getter
@@ -88,7 +88,7 @@ class Furniture_Card extends Cards {
 
     @Override 
     public String toString() {
-        return super.toString() + " Current Multiplier:" + multiplier;
+        return super.toString() + " Multiplier:" + multiplier;
     }
 
     /** multiplier getter
