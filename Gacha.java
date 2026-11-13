@@ -3,30 +3,35 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * Gacha: This is a helper class which handles all the randomized 'Gacha' style card pulling. This class only works when a Deck object is initialized, and should not be instantiated otherwise.
+ * 
+ * @author Charlie Sanchez, Claude
+ * @version 1.00
+ */
 public class Gacha {
     public static final int PULL_COST = 100;
 
-    // 1 -> more common
-    // 5 -> least common
-    private static final Map<Integer, Double> RARITY_WEIGHTS = Map.of(
-            1, 67.67,
-            2, 25.0,
-            3, 5.95,
-            4, 1.75,
-            5, 0.1
+    private static final Map<String, Double> RARITY_WEIGHTS = Map.of(
+            "Freshman", 67.67,
+            "Sophomore", 25.0,
+            "Junior", 5.95,
+            "Senior", 1.75,
+            "Super Senior", 1.0,
+            "Graduate", 0.1
     );
 
     // one template per card in the file
     private final ArrayList<Cards> pool;                     
     // only tiers that exist
-    private final Map<Integer, Double> activeWeights = new LinkedHashMap<>();
+    private final Map<String, Double> activeWeights = new LinkedHashMap<>();
 
     public Gacha() {
         pool = Deck.getDeck();
 
         for (Cards c : pool) {
-            int rarity = rarityOf(c);
-            activeWeights.put(rarity, RARITY_WEIGHTS.getOrDefault(rarity, 1.0)); // the card's odds are 1% if no rarity is found
+            String rarity = rarityOf(c);
+            activeWeights.put(rarity, RARITY_WEIGHTS.getOrDefault(rarity, 1.0));
         }
 
         if (pool.isEmpty()) {
@@ -34,33 +39,43 @@ public class Gacha {
         }
     }
 
-    /** Rolls a rarity tier, picks a random card of that tier, and returns a NEW copy of it. */
+    /**
+     * Rolls a rarity tier, picks a random card of that tier, and returns a new copy of it.
+     * @return Card object which was randomly selected, utilizing the weights in Gacha.java
+     * @author Charlie Sanchez, Claude
+     */
     public Cards pull() {
-        int rarity = rollRarity();
+        String rarity = rollRarity();
 
         // collect the positions of every card with that rarity
         ArrayList<Integer> matches = new ArrayList<>();
         for (int i = 0; i < pool.size(); i++) {
-            if (rarityOf(pool.get(i)) == rarity) {
+            if (rarityOf(pool.get(i)).equals(rarity)) {
                 matches.add(i);
             }
         }
 
         int index = matches.get(ThreadLocalRandom.current().nextInt(matches.size()));
 
-        // Re-reading by index builds a brand new object, so two copies of the
-        // same card never share one instance (important for per-copy random stats).
+        // Re-reading by index builds a brand new object, 
+        // which is bad for memory usage (maybe) but good for ensuring corruption doesn't happen I guess
         return Deck.readCardFromFile(index);
     }
 
-    private int rollRarity() {
-        int total = 0;
+    /**
+     * Helper method for Gacha.pull():
+     * selects a rarity utilizing the weights from the map defined in Gacha.java, acting as the engine to the gacha system.
+     * @return The name of the selected rarity, which is intended to be used as a clamp for the card pull to be a card only of that rarity.
+     * @author Charlie Sanchez, Claude
+     */
+    private String rollRarity() {
+        double total = 0;
         for (double weight : activeWeights.values()) {
             total += weight;
         }
 
-        int roll = ThreadLocalRandom.current().nextInt(total);
-        for (Map.Entry<Integer, Double> entry : activeWeights.entrySet()) {
+        double roll = ThreadLocalRandom.current().nextDouble(total);
+        for (Map.Entry<String, Double> entry : activeWeights.entrySet()) {
             roll -= entry.getValue();
             if (roll < 0) {
                 return entry.getKey();
@@ -69,7 +84,14 @@ public class Gacha {
         throw new IllegalStateException("Rarity roll fell through; weights are broken.");
     }
 
-    private static int rarityOf(Cards card) {
-        return Integer.parseInt(card.getRarity());
+    /**
+     * Returns the rarity of the specified card
+     * @param card The card object of which rarity must be checked.
+     * @return The card's rarity (as a String).
+     * @author Charlie Sanchez, Claude
+     * @version 1.00
+     */
+    private static String rarityOf(Cards card) {
+        return card.getRarity();
     }
 }

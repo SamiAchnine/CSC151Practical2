@@ -69,7 +69,7 @@ public class Player {
 
 }
 
-/* human player subclass */
+/** human player subclass */
 class HumanPlayer extends Player{
     private ArrayList<Boolean> record = new ArrayList<Boolean>();
 
@@ -86,7 +86,7 @@ class HumanPlayer extends Player{
     }
 }
 
-/* cpu player subclass */
+/** cpu player subclass */
 class CPUPlayer extends Player {
 
     CPUPlayer(String name, int health) {
@@ -95,15 +95,10 @@ class CPUPlayer extends Player {
     
     public void drawCardIntoHand(ArrayList<Cards> allCards) {
         ArrayList<Cards> newHand = new ArrayList<>();
+        Gacha gacha = new Gacha();
 
-        ArrayList<Cards> shuffled = new ArrayList<>(allCards);
-        Collections.shuffle(shuffled);
-
-        // CPU draws up to 5 random cards.
-        int handSize = Math.min(5, shuffled.size());
-
-        for (int i = 0; i < handSize; i++) {
-            newHand.add(shuffled.get(i));
+        for (int i = 0; i < Battle.HAND_SIZE; i++) {
+            newHand.add(gacha.pull());
         }
 
         setHand(newHand);

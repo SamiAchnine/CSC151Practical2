@@ -54,6 +54,7 @@ public class Cards {
     }
 }
 
+/** This card is the one that does the attacks. */
 class Person_Card extends Cards {
     private int attack;
     Person_Card(String id, String name, String desc, String rare, int def, int atk) {
@@ -78,7 +79,7 @@ class Person_Card extends Cards {
     }
 }
 
-/* Furniture cards don't have attack. They only have defense; if they are in a person's hand they add a multiplier to the Person cards. */
+/** Furniture cards don't have attack. They only have defense; if they are in a person's stash they add a multiplier to the Person cards. */
 class Furniture_Card extends Cards {
     private int multiplier;
     Furniture_Card(String id, String name, String desc, String rare, int def, int mult) {
@@ -97,6 +98,4 @@ class Furniture_Card extends Cards {
     public int getMultiplier() {
         return multiplier;
     }
-
-    /* still need to code the logic for the multiplier buff IF in hand */
 }
