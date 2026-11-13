@@ -1,13 +1,17 @@
+import java.util.ArrayList;
+
 public class Player {
     private String name;
     private int health;
     /* private deck deck; */
     /* private arrayList hand */
 
+    public Player() {
+    }
+
     public Player(String name, int health) {
         this.name = name;
         this.health = health;
-        /* this hand = new.arraylist */
     }
 
     /* add method drawing a card */
@@ -16,9 +20,26 @@ public class Player {
         health -= battle_damage;
     }
 
-    /* add boolean method here */
+    public boolean isDefeated() {
+        return health  <= 0;
+    }
 }
 
 /* human player subclass */
+class HumanPlayer extends Player{
+    private ArrayList<Boolean> record = new ArrayList<Boolean>();
+
+    HumanPlayer(String name, int health) {
+        super(name, health);
+    }
+
+    public void addRecord(Player opponent) {
+        record.add(opponent.isDefeated());
+    }
+
+    public ArrayList<Boolean> getRecord() {
+        return record;
+    }
+}
 
 /* cpu player subclass */
