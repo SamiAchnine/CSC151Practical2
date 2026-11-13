@@ -2,6 +2,11 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Battle: The class which handles all the battle logic and methods.
+ * 
+ * @author GPT-6, Charlie Sanchez, Sami Achnine
+ */
 public class Battle {
     public static final int HAND_SIZE = 5;
     public static final int START_HEALTH = 1000;
@@ -11,17 +16,27 @@ public class Battle {
     private final CPUPlayer cpu;
     private final Scanner input;
 
+    /**
+     * Battle constructor, starts a battle with all the necessary people and the scanner as to not redeclare it.
+     * @param human The human player
+     * @param cpu The CPU player
+     * @param input The scanner which input will be handled through
+     */
     public Battle(HumanPlayer human, CPUPlayer cpu, Scanner input) {
         this.human = human;
         this.cpu = cpu;
         this.input = input;
     }
 
+    /**
+     * Begins a battle using the hands which each player has. The battle is cancelled if one competitor doesn't have a playable Person card. This also resets the players' healths to be the maximum of Battle.START_HEALTH or Battle.START_HEALTH * (defense / 10), which adds to the game balance. The Human picks a card and the CPU picks a card, looping until someone wins. 
+     * @return The result of the battle, true if the human wins and false if the human loses.
+     */
     public boolean fight() {
+        
         human.drawCardsIntoHand();
 
         ArrayList<Person_Card> humanFighters = personCards(human.getHand());
-
         ArrayList<Person_Card> cpuFighters = personCards(cpu.getHand());
 
         if (humanFighters.isEmpty() || cpuFighters.isEmpty()) {
@@ -49,11 +64,11 @@ public class Battle {
 
         if (humanFurnDef > 0) {
             // gives a bit more health, since games quickly become one-and-dones with high rarity cards
-            human.resetHealth(START_HEALTH * (humanFurnDef / 10));
+            human.resetHealth(Math.max(START_HEALTH, START_HEALTH * (humanFurnDef / 10)));
         }
         
         if (cpuFurnDef > 0) {
-            cpu.resetHealth(START_HEALTH * (cpuFurnDef / 10));
+            cpu.resetHealth(Math.max(START_HEALTH, START_HEALTH * (cpuFurnDef / 10)));
         }
 
 
@@ -105,8 +120,12 @@ public class Battle {
         return won;
     }
 
-    private Person_Card chooseCard(
-            ArrayList<Person_Card> fighters) {
+    /**
+     * This is a helper method which provides the logic for choosing a card during battle.
+     * @param fighters The list of fighters which a player has
+     * @return The fighter which the player has selected - Person_Card
+     */
+    private Person_Card chooseCard(ArrayList<Person_Card> fighters) {
 
         while (true) {
             System.out.println("\nChoose a card to play:");
@@ -127,11 +146,15 @@ public class Battle {
             } catch (NumberFormatException ignored) {
             }
 
-            System.out.println("Please enter a number from 1 to "
-                    + fighters.size() + ".");
+            System.out.println("Please enter a number from 1 to " + fighters.size() + ".");
         }
     }
 
+    /**
+     * A helper method which filters the ArrayList of cards to only fighters, or person cards.
+     * @param hand The original ArrayList of cards.
+     * @return The ArrayList of only Person_Cards
+     */
     private static ArrayList<Person_Card> personCards(ArrayList<Cards> hand) {
 
         ArrayList<Person_Card> result = new ArrayList<>();
@@ -145,6 +168,11 @@ public class Battle {
         return result;
     }
 
+    /**
+     * A helper method which returns the multiplier of all the furniture cards in the player's hand
+     * @param hand The collection of player-owned cards
+     * @return the multiplier, an integer
+     */
     private static int teamMultiplier(ArrayList<Cards> hand) {
 
         int mult = 1;
@@ -158,6 +186,11 @@ public class Battle {
         return mult;
     }
 
+    /**
+     * The defense stat of the current hand of the player.
+     * @param hand The collection of player owned cards
+     * @return The defense stat, an integer
+     */
     private static int furnitureDefense(ArrayList<Cards> hand) {
 
         int def = 0;
@@ -171,8 +204,12 @@ public class Battle {
         return def;
     }
 
-    private static void printHand(
-            String label, ArrayList<Cards> hand) {
+    /**
+     * A helper method which prints the cards in the player's hand using the label specified in the parameters
+     * @param label The label which is added to the front
+     * @param hand The hand where all the cards are printed out
+     */
+    private static void printHand(String label, ArrayList<Cards> hand) {
 
         System.out.println(label + ":");
 

@@ -24,7 +24,7 @@ public class SaveDataManager {
         }
         else {
             java.io.PrintWriter output = new java.io.PrintWriter(saveFile);
-            output.println("GACHASAVE1.1");
+            output.println("GACHASAVE1.2");
             output.close(); // Close the writer to ensure the header is saved and the file is released.
             return true;
         }
@@ -32,7 +32,7 @@ public class SaveDataManager {
 
     /**
      * This method recieves an array of objects, formats the array to be valid save data, and writes the save data.
-     * @param data: The Array of objects. Must be in this order: {money, name, collection} 
+     * @param data: The Array of objects. Must be in this order: {money, name, winPercent, collection} 
      * where money is an int, name is a String, and collection is an ArrayList of Cards.
      * @author Sami Achnine, GPT-6
      * @version 1.00
@@ -40,7 +40,7 @@ public class SaveDataManager {
     public static void saveDataRecieve(Object[] data) {
         // The handling of the different cards was created by GPT
         try (java.io.BufferedWriter writer = new java.io.BufferedWriter(new java.io.FileWriter("game.wecib"))) {
-            writer.write("GACHASAVE1.1");
+            writer.write("GACHASAVE1.2");
             writer.newLine();
 
             for (Object value : data) {
@@ -112,12 +112,13 @@ public class SaveDataManager {
 
         try (java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader("game.wecib"))) {
             String header = reader.readLine();
-            if (!header.equals("GACHASAVE1.1")) {
+            if (!header.equals("GACHASAVE1.2")) {
                 throw new java.io.IOException("Save file invalid");
             }
 
             data.add(reader.readLine()); // Money
             data.add(reader.readLine()); // Name
+            data.add(reader.readLine()); // winPercent
             data.add(readCards(reader)); // Collection
 
         } catch (Exception e) {

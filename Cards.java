@@ -1,3 +1,10 @@
+/**
+ * Cards: Root class for all Cards, contains the attributes of a card and generally does card things.
+ * 
+ * @author Charlie Sanchez
+ * @version 1.00
+ */
+
 public class Cards {
     private String ID;
     private String name;
@@ -12,7 +19,7 @@ public class Cards {
         this.rarity = rare;
         this.defense = def;
     }
-
+    
     public String toString() {
         return "Name: " + name + " Description: " + description
         + " Rarity: " + rarity + " Defense: " + defense;
@@ -54,7 +61,10 @@ public class Cards {
     }
 }
 
-/** This card is the one that does the attacks. */
+/**
+ * Person_Card: Subclass of Cards. This card is the one that does the attacks, with data related to attacking and damage values.
+ * @author Charlie Sanchez, Sami Achnine
+ */
 class Person_Card extends Cards {
     private int attack;
     Person_Card(String id, String name, String desc, String rare, int def, int atk) {
@@ -79,7 +89,10 @@ class Person_Card extends Cards {
     }
 }
 
-/** Furniture cards don't have attack. They only have defense; if they are in a person's stash they add a multiplier to the Person cards. */
+/**
+ * Furniture_Card: Subclass of Cards. Furniture cards can't attack. They only have defense; if they are in a person's stash they add a multiplier to the Person cards.
+ * @author Charlie Sanchez, Sami Achnine
+ */
 class Furniture_Card extends Cards {
     private int multiplier;
     Furniture_Card(String id, String name, String desc, String rare, int def, int mult) {

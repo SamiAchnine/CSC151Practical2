@@ -8,9 +8,9 @@ public class Main {
         int money = 500;
         ArrayList<Cards> collection = new ArrayList<>();
         String name = "";
+        double winPercent = 0.0;
         Scanner input = new Scanner(System.in);
         Gacha gacha = new Gacha();
-        HumanPlayer human = new HumanPlayer(name, Battle.START_HEALTH, collection);
 
 
         Object[] saveData; 
@@ -28,15 +28,19 @@ public class Main {
                 saveData = SaveDataManager.readSaveData();
                 money = Integer.parseInt((String)saveData[0]);
                 name = (String)saveData[1];
-                collection = (java.util.ArrayList<Cards>)saveData[2];
+                winPercent = Double.parseDouble((String)saveData[2]);
+                collection = (java.util.ArrayList<Cards>)saveData[3];
             }
             catch (Exception e) {
-                System.out.print("Save data could not be properly loaded. The game will now exit. Please validate the save file, and fix it, or delete it.");
+                System.out.println("Save data could not be properly loaded. The game will now exit. Please validate the save file, and fix it, or delete it.");
                 e.printStackTrace();
                 System.exit(74); // exit code 74 -> IO error
             }
             
         }
+
+        // declare human player after save data load so the name gets added
+        HumanPlayer human = new HumanPlayer(name, Battle.START_HEALTH, collection);
         
         System.out.print("Welcome to the WECIB Gacha Battle Game!\n");
 
@@ -52,7 +56,7 @@ public class Main {
                 addPull(gacha, collection);
             }
 
-            saveGame(money, name, collection, debug);
+            saveGame(money, name, winPercent, collection, debug);
         }
         else {
             System.out.println("Hi, " + name + "!");
@@ -67,7 +71,7 @@ public class Main {
             System.out.println("Please select an option: ");
             System.out.println("\n1. Play the gacha");
             System.out.println("2. Enter Battle");
-            System.out.println("3. View collection");
+            System.out.println("3. View collection and Win Rate");
             System.out.println("4. Save & Exit");
             System.out.print("(1-4): ");
 
@@ -79,7 +83,7 @@ public class Main {
                     money -= Gacha.PULL_COST;
                     addPull(gacha, collection);
                     human.setCollection(collection);
-                    saveGame(money, name, collection, debug);
+                    saveGame(money, name, winPercent, collection, debug);
                 } else {
                     System.out.println("Not enough money!");
                 }
@@ -95,6 +99,7 @@ public class Main {
 
                 if (battle.fight()) {
                     money += Battle.WIN_REWARD;
+                    winPercent = human.getRecordPercent();
                 }
 
             } else if (answer.equals("3")) {
@@ -105,8 +110,11 @@ public class Main {
                     System.out.println(c);
                 }
 
+                System.out.println("Your current win percentage is " + winPercent + "%");
+
+
             } else if (answer.equals("4")) {
-                saveGame(money, name, collection, debug);
+                saveGame(money, name, winPercent, collection, debug);
                 
                 // ends game
                 playing = false;
@@ -132,11 +140,16 @@ public class Main {
 
             
             // after every option, the game saves
-            saveGame(money, name, collection, debug);
+            saveGame(money, name, winPercent, collection, debug);
         }
 
     }
 
+    /**
+     * Adds a card from the gacha pull to the player's collection
+     * @param gacha The Gacha that the pull is being pulled from
+     * @param collection The collection which the card will be added to
+     */
     private static void addPull(Gacha gacha, ArrayList<Cards> collection) {
         Cards pulled = gacha.pull();
         if (pulled == null) {
@@ -148,8 +161,16 @@ public class Main {
         }
     }
 
-    private static void saveGame(int money, String name, ArrayList<Cards> collection, boolean debug) {
-        Object[] dataToSave = {money, name, collection};
+    /**
+     * A helper method which creates the array of objects to send to the save data manager
+     * @param money The user's money count to be saved - int
+     * @param name The user's name to be saved - String
+     * @param winPercent The user's win rate percentage to be saved - double
+     * @param collection The user's card collection - ArrayList<Cards>
+     * @param debug Whether to print out that the game is saved every time. This boolean value is not saved.
+     */
+    private static void saveGame(int money, String name, double winPercent, ArrayList<Cards> collection, boolean debug) {
+        Object[] dataToSave = {money, name, winPercent, collection};
         SaveDataManager.saveDataRecieve(dataToSave);
         if (debug) {
             System.out.println("Game saved!");
