@@ -20,12 +20,13 @@ public class Player {
         this.collection = collection;
     }
 
-    public void drawCardsIntoHand(ArrayList<Cards> collection) {
-        Collections.shuffle(collection);
+    public void drawCardsIntoHand() {
+        ArrayList<Cards> collectionCP = new ArrayList<>(this.collection);
+        Collections.shuffle(collectionCP);
         ArrayList<Cards> tempHand = new ArrayList<>();
 
-        for (int i = 0; i < collection.size(); i++) {
-            tempHand.add(collection.remove(0));
+        for (int i = 0; i < collectionCP.size(); i++) {
+            tempHand.add(collectionCP.remove(0));
         }
 
         this.hand = tempHand;

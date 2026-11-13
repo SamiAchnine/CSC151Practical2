@@ -8,8 +8,8 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Gacha {
     public static final int PULL_COST = 100;
 
-    // Rarity number (from cards.wecib) -> relative chance of being rolled.
-    // Assumes 1 = common ... 4 = legendary. Change to match your file.
+    // 1 -> more common
+    // 5 -> least common
     private static final Map<Integer, Double> RARITY_WEIGHTS = Map.of(
             1, 67.67,
             2, 25.0,
@@ -18,15 +18,17 @@ public class Gacha {
             5, 0.1
     );
 
-    private final ArrayList<Cards> pool;                      // one template per card in the file
-    private final Map<Integer, Double> activeWeights = new LinkedHashMap<>(); // only tiers that exist
+    // one template per card in the file
+    private final ArrayList<Cards> pool;                     
+    // only tiers that exist
+    private final Map<Integer, Double> activeWeights = new LinkedHashMap<>();
 
     public Gacha() {
         pool = Deck.getDeck();
 
         for (Cards c : pool) {
             int rarity = rarityOf(c);
-            activeWeights.put(rarity, RARITY_WEIGHTS.getOrDefault(rarity, 1.0));
+            activeWeights.put(rarity, RARITY_WEIGHTS.getOrDefault(rarity, 1.0)); // the card's odds are 1% if no rarity is found
         }
 
         if (pool.isEmpty()) {

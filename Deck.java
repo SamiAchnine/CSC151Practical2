@@ -13,9 +13,6 @@ public class Deck {
     /**
      * Reads from a file in the same directory called cards.wecib, and adds them to an ArrayList called deck. 
      * This deck is used for all gacha related card-drawing logic.
-     * This method also makes use of other helper methods within the Deck.java file. These helper methods are private 
-     * and should NEVER be called outside of this method.
-     * 
      * 
      * @author Sami Achnine
      * @return ArrayList of Cards
